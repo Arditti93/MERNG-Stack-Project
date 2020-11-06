@@ -1,10 +1,13 @@
 import React from 'react'
 import {Button, Card, Icon, Image, Label } from 'semantic-ui-react' 
 import moment from 'moment'
-import {Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
-function PostCard({post: { body, createdAt, id, username, likeCount, commentCount, likes }}){
+function PostCard({
+    post: { body, createdAt, id, username, likeCount, commentCount, likes }
+}) {
+
 
     function commentOnPost(){
         console.log('like post')
