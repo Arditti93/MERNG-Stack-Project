@@ -8,7 +8,8 @@ const { MONGODB } = require('./config.js');
 
 const pubsub = new PubSub ()
 
-const server = new ApolloServer({
+const server = new ApolloServer ({
+    connectToDevTools: true,
     typeDefs,
     resolvers,
     context: ({ req }) => ({req, pubsub}) 
