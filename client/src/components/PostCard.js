@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 import { AuthContext } from '../context/auth'
 import  LikeButton  from './LikeButton'
+import DeleteButton from './DeleteButton.js'
 
 
 function PostCard({
@@ -28,14 +29,14 @@ function PostCard({
                 src='https://react.semantic-ui.com/images/avatar/large/jenny.jpg'
                 />
                 <Card.Header>{username}</Card.Header>
-                <Card.Meta as={Link} to={`/posts/${id}`}>{moment(createdAt).fromNow()}</Card.Meta>
+                <Card.Meta as={Link} to={`/post/${id}`}>{moment(createdAt).fromNow()}</Card.Meta>
                 <Card.Description>{body}</Card.Description>
         </Card.Content>
         <Card.Content extra>
 
                 <LikeButton user={user} post={{ id, likes, likeCount }} />
 
-                <Button labelPosition='right' as={Link} to={`/posts/${id}`}>
+                <Button labelPosition='right' as={Link} to={`/post/${id}`}>
                     <Button color='orange' basic>
                         <Icon name='comment' />
                     </Button>
@@ -43,7 +44,7 @@ function PostCard({
                         {commentCount}
                     </Label>
                 </Button>
-                    {user && user.username === username  && (
+                {user && user.username === username && <DeleteButton postId={id} />}
                         <Button as="div" color="red" floated="right" onClick={() => console.log('Delete post')}>
                             <Icon name="trash" style={{ margin: 0 }} />
                         </Button>
